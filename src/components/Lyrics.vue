@@ -1,6 +1,6 @@
 <template>
-    <div class="lyric-container">
-        <div v-bind:key="lyric" v-for="lyric in lyrics">
+    <div class="lyric-container" v-if="visible">
+        <div class="lyric-line" v-bind:key="lyric" v-for="lyric in lyrics">
             <div>{{lyric}}</div>
         </div>
     </div>
@@ -9,12 +9,28 @@
 <script>
 export default {
     name: "Lyrics",
-    props: ["lyrics"]
+    props: {
+        visible: {
+            type: Boolean
+        },
+        lyrics: {
+            type: Array
+        }
+    }
 }
 </script>
 
 <style scoped>
     .lyric-container {
-        text-align: center;
+        text-align: left;
+        margin: 0px auto;
+        max-width: 25em;
+        padding: 25px;
+        background-color: whitesmoke;
+        border-radius: 14px;
+    }
+
+    .lyric-line {
+        padding-bottom: 8px;
     }
 </style>

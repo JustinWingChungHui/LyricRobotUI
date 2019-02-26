@@ -9,7 +9,11 @@
 <script>
 export default {
     name: "Loading",
-    props: ["visible"]
+    props: {
+        visible: {
+            type: Boolean
+        }
+    }
 }
 </script>
 
@@ -20,12 +24,11 @@ export default {
     overflow: hidden;
     position: relative;
     height: 200px;
-    left: 40%;
+    left: 45%;
 }
 
 @media only screen and (max-width: 700px) {
     .gear-container {
-
         left: 30%;
     }
 }
