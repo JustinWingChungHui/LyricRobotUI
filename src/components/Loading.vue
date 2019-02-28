@@ -1,8 +1,11 @@
 <template>
-    <div class="gear-container" v-if="visible">
-        <i id="gear1" class="fa fa-5x fa-gear spin"></i>
-        <i id="gear2" class="fa fa-5x fa-gear spin-back"></i>
-        <i id="gear3" class="fa fa-5x fa-gear spin"></i>
+    <div>
+        <div>{{message}}</div>
+        <div class="gear-container" v-if="visible">
+            <i id="gear1" class="fa fa-5x fa-gear spin"></i>
+            <i id="gear2" class="fa fa-5x fa-gear spin-back"></i>
+            <i id="gear3" class="fa fa-5x fa-gear spin"></i>
+        </div>
     </div>
 </template>
 
@@ -12,6 +15,9 @@ export default {
     props: {
         visible: {
             type: Boolean
+        },
+        message: {
+            type: String
         }
     }
 }

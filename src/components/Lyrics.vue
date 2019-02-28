@@ -1,9 +1,11 @@
 <template>
-    <div class="lyric-container" v-if="visible">
-        <div class="lyric-line" v-bind:key="lyric" v-for="lyric in lyrics">
-            <div>{{lyric}}</div>
+    <transition name="fade">
+        <div class="lyric-container" v-if="visible">
+            <div class="lyric-line" v-bind:key="lyric" v-for="lyric in lyrics">
+                <div>{{lyric}}</div>
+            </div>
         </div>
-    </div>
+    </transition>
 </template>
 
 <script>
@@ -32,5 +34,12 @@ export default {
 
     .lyric-line {
         padding-bottom: 8px;
+    }
+
+    .fade-enter-active {
+        transition: opacity .5s;
+    }
+    .fade-enter {
+        opacity: 0;
     }
 </style>

@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <Header/>
+    <Header v-bind:loading="loading" />
     
     <div class="content">
       <OptionsForm @create="createLyrics" v-bind:disabled="formDisabled"/>
-      <Loading v-bind:visible="loading"/>
+      <Loading v-bind:visible="loading" v-bind:message="loadingMessage"/>
       <Lyrics v-bind:lyrics="lyrics" v-bind:visible="lyricsVisible"/>     
     </div>
     
@@ -35,7 +35,9 @@ export default {
       lyrics: [],
       loading: false,
       formDisabled: false,
-      lyricsVisible: false
+      lyricsVisible: false,
+      warmup: false,
+      loadingMessage: ""
     }
   },
   
@@ -47,13 +49,30 @@ export default {
   methods: {
     
     warmupFunction() {
+
+      this.warmup = true;
+
       // warm up azure function
       axios.get('https://lyriccreator.azurewebsites.net/api/LyricCreatorFunction' ,{
+          timeout: 30000,
           params: {
             code: 'N87Je1kenLA0R3pihqLE466DUfYtfdu1MzzAnd8C3mJCfXLjqbTpvQ==',
             warmup: true
             },          
-        })
+      }).then((response) => {
+        this.warmup = false;
+        this.updateLoadingMessage();
+      })
+    },
+
+    updateLoadingMessage() {
+      if (this.warmup && this.loading) {
+        this.loadingMessage = "Restarting Robot after shutdown...";
+      } else if (!this.warmup && this.loading) {
+        this.loadingMessage = "Generating Lyrics...";
+      } else {
+        this.loadingMessage = "";
+      }
     },
 
     // Fires off to call Create Lyric api and returns data
@@ -62,8 +81,10 @@ export default {
        this.formDisabled = true;
        this.lyricsVisible = false;
        this.lyrics = [];
+       this.updateLoadingMessage();
 
        axios.get('https://lyriccreator.azurewebsites.net/api/LyricCreatorFunction' ,{
+         timeout: 30000,
          params: {
           code: 'N87Je1kenLA0R3pihqLE466DUfYtfdu1MzzAnd8C3mJCfXLjqbTpvQ==',
           lines: lines
@@ -73,8 +94,11 @@ export default {
           this.loading = false;
           this.formDisabled = false;
           this.lyricsVisible = true;
-          this.lyrics = response.data
-       })
+          this.lyrics = response.data;
+          this.updateLoadingMessage();
+       }).catch((ex) => {
+
+       });
     }
   }
 }
