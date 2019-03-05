@@ -53,10 +53,10 @@ export default {
       this.warmup = true;
 
       // warm up azure function
-      axios.get('https://lyriccreator.azurewebsites.net/api/LyricCreatorFunction' ,{
+      axios.get(this.$config.CreateLyricAPI ,{
           timeout: 30000,
           params: {
-            code: 'N87Je1kenLA0R3pihqLE466DUfYtfdu1MzzAnd8C3mJCfXLjqbTpvQ==',
+            code: this.$config.CreateLyricAPICode,
             warmup: true
             },          
       }).then((response) => {
@@ -76,18 +76,20 @@ export default {
     },
 
     // Fires off to call Create Lyric api and returns data
-    createLyrics(lines) {
+    createLyrics(lines, allow_profanities) {
+       console.log(`Child createLyrics called with lines:${lines} allow_profanities:${allow_profanities}`)
        this.loading = true;
        this.formDisabled = true;
        this.lyricsVisible = false;
        this.lyrics = [];
        this.updateLoadingMessage();
 
-       axios.get('https://lyriccreator.azurewebsites.net/api/LyricCreatorFunction' ,{
+       axios.get(this.$config.CreateLyricAPI ,{
          timeout: 30000,
          params: {
-          code: 'N87Je1kenLA0R3pihqLE466DUfYtfdu1MzzAnd8C3mJCfXLjqbTpvQ==',
-          lines: lines
+          code: this.$config.CreateLyricAPICode,
+          lines: lines,
+          profanities: allow_profanities
           },          
        }).then((response) => {
           console.log(response)

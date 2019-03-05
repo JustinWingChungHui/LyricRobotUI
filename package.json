@@ -13,6 +13,7 @@
     "font-awesome": "^4.7.0",
     "purecss": "^1.0.0",
     "vue": "^2.6.7",
+    "vue-config": "^1.0.0",
     "vue-resource": "^1.5.1"
   },
   "devDependencies": {
