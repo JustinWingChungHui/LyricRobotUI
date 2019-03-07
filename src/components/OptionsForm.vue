@@ -71,7 +71,7 @@ export default {
 
     /**Stop stacking label on mobile device**/
     .pure-form input:not([type]), .pure-form input[type="text"], .pure-form input[type="password"], .pure-form input[type="email"], .pure-form input[type="url"], .pure-form input[type="date"], .pure-form input[type="month"], .pure-form input[type="time"], .pure-form input[type="datetime"], .pure-form input[type="datetime-local"], .pure-form input[type="week"], .pure-form input[type="number"], .pure-form input[type="search"], .pure-form input[type="tel"], .pure-form input[type="color"], .pure-form label {
-	    margin-bottom: 0.3em;
-	    display: inline-block !important;
+        margin-bottom: 0.3em;
+        display: inline-block !important;
     }
 </style>
