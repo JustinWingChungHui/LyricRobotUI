@@ -1,7 +1,7 @@
 <template>
     <transition name="fade">
-        <div class="lyric-container" v-if="visible">
-            <div class="lyric-line" v-bind:key="lyric" v-for="lyric in lyrics">
+        <div class="lyric-container">
+            <div class="lyric-line" v-bind:key="index" v-for="(lyric, index) in lyrics">
                 <div>{{lyric}}</div>
             </div>
         </div>
@@ -12,9 +12,6 @@
 export default {
     name: "Lyrics",
     props: {
-        visible: {
-            type: Boolean
-        },
         lyrics: {
             type: Array
         }

@@ -1,12 +1,9 @@
 <template>
     <div class="switch-container">       
-
         <label class="switch">                   
             <input type="checkbox" v-model="value" :disabled="disabled" @change="onSwitchChanged(value)"/>
             <span class="slider round"></span>
         </label>
-
-        <label class="switch-label" for="lines">{{label}}</label>
 
     </div>
 </template>
@@ -18,9 +15,6 @@ export default {
     props: {
         initialValue: {
             type: Boolean
-        },
-        label: {
-            type: String
         },
         disabled: {
             type: Boolean
@@ -45,7 +39,7 @@ export default {
         padding: 5px;
     }
     .switch-label {
-        padding-left: 10px;
+        padding-right: 10px;
     }
 
      /* The switch - the box around the slider */

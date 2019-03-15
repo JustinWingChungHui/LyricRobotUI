@@ -14,7 +14,8 @@
     "purecss": "^1.0.0",
     "vue": "^2.6.7",
     "vue-config": "^1.0.0",
-    "vue-resource": "^1.5.1"
+    "vue-resource": "^1.5.1",
+    "vue-router": "^3.0.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.4.0",

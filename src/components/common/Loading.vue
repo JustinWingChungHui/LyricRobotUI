@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>{{message}}</div>
-        <div class="gear-container" v-if="visible">
+        <div class="gear-container">
             <i id="gear1" class="fa fa-5x fa-gear spin"></i>
             <i id="gear2" class="fa fa-5x fa-gear spin-back"></i>
             <i id="gear3" class="fa fa-5x fa-gear spin"></i>
@@ -13,9 +13,6 @@
 export default {
     name: "Loading",
     props: {
-        visible: {
-            type: Boolean
-        },
         message: {
             type: String
         }
@@ -24,7 +21,7 @@ export default {
 </script>
 
 <style scoped>
-@import "../../node_modules/font-awesome/css/font-awesome.css";
+@import "../../../node_modules/font-awesome/css/font-awesome.css";
 
 .gear-container {
     overflow: hidden;
