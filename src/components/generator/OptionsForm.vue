@@ -39,6 +39,7 @@
                                 <option>Alternative</option>
                                 <option>Dance</option>
                                 <option>Electronic</option>
+                                <option>Eurovision</option>
                                 <option>Experimental</option>
                                 <option>Folk</option>
                                 <option>Funk</option>
